@@ -96,7 +96,7 @@ public class ApprovalReminder {
 	
 	    	    msg.setRecipient(Message.RecipientType.TO, addressTo);
 	
-	    	   	String msgBody =  "There are "+elemList.size()+" approval requests pending. Please resolve them at your earliest convenience. <a href = \"http://goma.ccs.miami.edu/admin/\">Click here to go to the GOMA Catalog website</a>.";
+	    	   	String msgBody =  "There are "+elemList.size()+" approval requests pending. Please resolve them at your earliest convenience.";
 	    	    		
 	    	    // Setting the Subject and Content Type
 	    	    msg.setSubject("GoMonitor Pending Approval Reminder");

@@ -17,17 +17,17 @@
 				<hr>
 				<span>To search or browse for water resource monitoring station information, click "SEARCH".  Searching the GOMA Catalog of Monitoring Programs is simple and does not require account creation.</span>
 				<div class = "splash-menu">
-					<a class = "search" href = "/goma/search">Search</a>
+					<a class = "search btn" href = "/goma/search">Search</a>
 				</div>
 				<hr>
 				<span><b>Data providers:</b>  If you would like to enter information about your organization's water resource monitoring, please click "REQUEST ACCOUNT", or "LOGIN" to your existing account.  Account creation is free of charge, and allows you password-protected access to create, edit, and delete information related to monitoring stations belonging only to projects that you have created or been given permission to edit.</span>
 				<div class = "splash-menu">
-					<a class = "request" href = "/goma/request-account">Request Account</a>
-			  		<a class = "login" href = "/goma/admin/">Login</a>
+					<a class = "request btn" href = "/goma/request-account">Request Account</a>
+			  		<a class = "login btn" href = "/goma/admin/">Login</a>
 			  	</div>
 			  	<hr>
 			  	<br>
-			  				 	The GOMA catalog of Monitoring Programs was developed in collaboration with the University of Miami Center for Computational Science and funded by the National Oceanic and Atmospheric Administration (NOAA).  The software developed for this catalog (Aquamonitor) is available free of charge on Github.
+			  				 	The GOMA catalog of Monitoring Programs was developed in collaboration with the University of Miami Center for Computational Science and funded by the National Oceanic and Atmospheric Administration (NOAA).  The software developed for this catalog (Aquamonitor) is available free of charge on <a href = "https://github.com/TheUMCCS/aquamonitor">Github</a>.
 		  	
 			  	<div class = "footer">
 			  		<div class = "footer-elem">

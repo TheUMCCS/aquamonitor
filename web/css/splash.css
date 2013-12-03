@@ -34,7 +34,12 @@
     	outline: medium none;
 	  }
 	  #splash-content a {
-  	  	display: inline-block;
+		color: #007413;
+		text-transform: uppercase;
+		text-decoration: none;
+	  }
+	  #splash-content a.btn {
+	   	display: inline-block;
 	  	height: 24px;
 	  	padding: 3px 3px 0px 24px;
 	  	text-decoration: none;
