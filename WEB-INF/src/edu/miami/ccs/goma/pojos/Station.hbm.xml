@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.Station" table="station">
+        <id name="stationId" type="long">
+            <column name="station_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.station_station_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="userByCreatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="created_by" not-null="true" />
+        </many-to-one>
+        <many-to-one name="project" class="edu.miami.ccs.goma.pojos.Project" fetch="select">
+            <column name="primary_project_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="program" class="edu.miami.ccs.goma.pojos.Program" fetch="select">
+            <column name="program_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organization" class="edu.miami.ccs.goma.pojos.Organization" fetch="select">
+            <column name="organization_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByUpdatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="updated_by" />
+        </many-to-one>
+        <many-to-one name="statusValueByApprovalStatusId" class="edu.miami.ccs.goma.pojos.StatusValue" fetch="select">
+            <column name="approval_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="statusValueByStatusId" class="edu.miami.ccs.goma.pojos.StatusValue" fetch="select">
+            <column name="status_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="website" type="string">
+            <column name="website" length="1000" />
+        </property>
+        <property name="keywords" type="string">
+            <column name="keywords" length="1000" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="start_date" length="13" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="end_date" length="13" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+        <property name="dateUpdated" type="timestamp">
+            <column name="date_updated" length="35" />
+        </property>
+        <!-- 
+        <property name="location" type="serializable">
+            <column name="location" />
+        </property>
+        -->
+        <property name="locationStr" type="string">
+            <column name="location_str" not-null="true" />
+        </property>
+        <set name="observationParameters" table="observation_parameter" inverse="true" lazy="true" fetch="select" cascade = "delete">
+            <key>
+                <column name="station_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationParameter" />
+        </set>
+        <set name="stationProjects" table="station_project" inverse="true" lazy="true" fetch="select" cascade = "delete">
+            <key>
+                <column name="station_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.StationProject" />
+        </set>
+    </class>
+</hibernate-mapping>

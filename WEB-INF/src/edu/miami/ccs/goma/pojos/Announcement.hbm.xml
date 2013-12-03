@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.Announcement" table="announcement">
+        <id name="announcementId" type="long">
+            <column name="announcement_id" />
+            <generator class="increment" />
+        </id>
+        <many-to-one name="userByCreatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="created_by" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name"/>
+        </property>
+        <property name="description" type="string">
+            <column name="description"/>
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

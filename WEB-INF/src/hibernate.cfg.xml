@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory name="">
+        <property name="hibernate.bytecode.use_reflection_optimizer">false</property>
+        <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+        <property name="hibernate.connection.password">YOUR_PASSWORD</property>
+        <property name="hibernate.connection.url">jdbc:postgresql://YOUR_DATABASE_ADDRESS</property>
+        <property name="hibernate.connection.username">YOUR_USERNAME</property>
+        <property name="hibernate.default_schema">SCHEMA_NAME</property>
+<!--         <property name="hibernate.dialect">org.hibernatespatial.postgis.PostgisDialect</property> -->
+        <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+        <property name="hibernate.search.autoregister_listeners">false</property>
+        <property name="hibernate.show_sql">true</property>
+        <mapping resource="edu/miami/ccs/goma/pojos/Announcement.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/ApprovalRequest.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/ObservationTuple.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/GeographicZone.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/DictionaryTerm.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/ApprovalRequestType.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/Dictionary.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/Program.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/ProjectManager.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/DataDistributor.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/ObservationParameter.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/User.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/UserRole.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/Project.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/Organization.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/StatusType.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/ProgramAdmin.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/StationProject.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/Person.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/StatusValue.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/OrganizationType.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/Station.hbm.xml" />
+        <mapping resource="edu/miami/ccs/goma/pojos/ProgramManager.hbm.xml" />
+    </session-factory>
+</hibernate-configuration>

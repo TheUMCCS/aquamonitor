@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.ProgramAdmin" table="program_admin">
+        <composite-id name="id" class="edu.miami.ccs.goma.pojos.ProgramAdminId">
+            <key-property name="userId" type="java.lang.Long">
+                <column name="user_id" />
+            </key-property>
+            <key-property name="programId" type="java.lang.Long">
+                <column name="program_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="user" class="edu.miami.ccs.goma.pojos.User" update="false" insert="false" fetch="select">
+            <column name="user_id" />
+        </many-to-one>
+        <many-to-one name="program" class="edu.miami.ccs.goma.pojos.Program" update="false" insert="false" fetch="select">
+            <column name="program_id" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

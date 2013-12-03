@@ -1,0 +1,118 @@
+	  html, body {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		font-family: lucida sans unicode, trebuchet ms, helvetica, sans-serif;
+		font-size: 13px;
+		min-height: 800px;
+		background: url("/goma/web/images/search-pane-bg.png") repeat-y;
+	  }
+
+	  body.splash {
+	  	margin: 0;
+	  	padding: 0px;
+	  	background: #ffffff url("/goma/web/images/bg.jpg") no-repeat;
+	  	background-position: bottom center;
+	  	text-align: center;
+	  }
+	  #container {
+  	  	margin: auto;
+  	  	width: 626px;
+  	  	position: relative;
+  	  	height: 100%;
+	  }
+	  #splash-content{
+		position: absolute;
+		bottom: 0px;
+	  	width: 600px;
+	  	padding: 8px;
+	  	border: 1px solid #ffffff;
+	  	border-radius: 15px;
+	  	background: url("/goma/web/images/splash-content-bg.png") repeat;
+	  	border-color: rgba(80, 170, 235, 0.6);
+    	box-shadow: 0 0 15px rgba(80, 120, 235, 0.5);
+    	outline: medium none;
+	  }
+	  #splash-content a {
+  	  	display: inline-block;
+	  	height: 24px;
+	  	padding: 3px 3px 0px 24px;
+	  	text-decoration: none;
+	  	text-transform: uppercase;
+		letter-spacing: 1px;
+		color: #ffffff;
+		font-weight: bold;
+	  }
+	  .splash-menu {
+	  	height: 24px;
+	  	width: 100%;
+	  	text-align: right;
+	  }
+	  a.search {
+	  	background: #007a98 url("/goma/web/images/search-splash.png") no-repeat;
+	  }
+	  a.login {
+	  	background: #007a98 url("/goma/web/images/login.png") no-repeat;
+	  }
+	  a.request {
+	  	background: #007a98 url("/goma/web/images/request-account.png") no-repeat;
+	  	
+	  }
+	  #splash-menu a, #splash-menu a:visited {
+	  	color: #ffffff;
+	  	display: block;
+	  	float: left;
+	  	padding: 50px 3px 3px 3px;
+	  	width: 80px;
+	  	height: 30px;
+	  	border: 1px solid #88d4ff;
+	  	text-decoration: none;
+	  	text-transform: uppercase;
+	  	margin: 5px;
+		letter-spacing: 1px;
+		line-height: 15px;
+	  	background-position: 20px 3px;
+	  }
+	  #splash-menu a:hover{
+	  		border-color: rgba(80, 170, 235, 0.6);
+    		box-shadow: 0 0 10px rgba(80, 120, 235, 0.5);
+    		outline: medium none;
+      }
+	 
+	  #logo {
+	  	height: 222px;
+	  	width: 626px;
+	  	color: #4e4f50;
+	  	font-size: 19px;
+	  	font-weight: bold;
+	  	background: url("/goma/web/images/splash-logo.png") no-repeat;
+	  	margin: auto;
+	  	padding-top: 30px;
+	  }
+	  
+	  .blurb {
+	  	color: #000000;
+	  	padding: 10px;
+	  	text-align: justify;
+	  	line-height: 17px;
+	  	background: url("/goma/web/images/blurb-bg.png") repeat;
+	  	border-radius: 15px;
+	  }
+	  
+	  .blurb span {
+	  	font-size: 13px;
+	  }
+	  
+	  .footer {
+	  	text-align: center;
+		margin-top: 20px;
+	  	height: 120px;
+	  }
+	  .footer-elem {
+	  	float: left;
+	  	padding: 5px;
+	  	text-align: center;
+	  	display: table-cell;
+	  	height: 100px;
+	  	vertical-align: middle;
+	  }

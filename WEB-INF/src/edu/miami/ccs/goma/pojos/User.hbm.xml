@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.User" table="user">
+        <id name="userId" type="long">
+            <column name="user_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.user_user_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="organization" class="edu.miami.ccs.goma.pojos.Organization" fetch="select">
+            <column name="organization_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userRole" class="edu.miami.ccs.goma.pojos.UserRole" fetch="select" cascade="all">
+            <column name="user_role_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="person" class="edu.miami.ccs.goma.pojos.Person" fetch="select" cascade="all">
+            <column name="person_id" not-null="true" />
+        </many-to-one>
+        <property name="username" type="string">
+            <column name="username" length="100" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="100" not-null="true" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+        <property name="dateUpdated" type="timestamp">
+            <column name="date_updated" length="35" />
+        </property>
+        <property name="updatedBy" type="java.lang.Long">
+            <column name="updated_by" />
+        </property>
+        <property name="createdBy" type="long">
+            <column name="created_by" not-null="true" />
+        </property>
+        <set name="approvalRequestsForUpdatedBy" table="approval_request" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ApprovalRequest" />
+        </set>
+        <set name="stationsForUpdatedBy" table="station" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Station" />
+        </set>
+        <set name="dictionariesForUpdatedBy" table="dictionary" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Dictionary" />
+        </set>
+        <set name="dictionaryTermsForUpdatedBy" table="dictionary_term" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.DictionaryTerm" />
+        </set>
+        <set name="stationsForCreatedBy" table="station" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Station" />
+        </set>
+        <set name="geographicZonesForUpdatedBy" table="geographic_zone" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.GeographicZone" />
+        </set>
+        <set name="approvalRequestsForApproverId" table="approval_request" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approver_id" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ApprovalRequest" />
+        </set>
+        <set name="approvalRequestsForCreatedBy" table="approval_request" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ApprovalRequest" />
+        </set>
+        <set name="programsForUpdatedBy" table="program" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Program" />
+        </set>
+        <set name="programAdmins" table="program_admin" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="user_id" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ProgramAdmin" />
+        </set>
+        <set name="programsForOwnerId" table="program" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="owner_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Program" />
+        </set>
+        <set name="organizationsForUpdatedBy" table="organization" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Organization" />
+        </set>
+        <set name="dictionariesForCreatedBy" table="dictionary" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Dictionary" />
+        </set>
+        <set name="projectsForUpdatedBy" table="project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Project" />
+        </set>
+        <set name="observationTuplesForUpdatedBy" table="observation_tuple" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationTuple" />
+        </set>
+        <set name="approvalRequestsForRequestorId" table="approval_request" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="requestor_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ApprovalRequest" />
+        </set>
+        <set name="dictionaryTermsForCreatedBy" table="dictionary_term" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.DictionaryTerm" />
+        </set>
+        <set name="observationTuplesForCreatedBy" table="observation_tuple" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationTuple" />
+        </set>
+        <set name="programsForCreatedBy" table="program" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Program" />
+        </set>
+        <set name="observationParametersForUpdatedBy" table="observation_parameter" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="updated_by" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationParameter" />
+        </set>
+        <set name="projectsForCreatedBy" table="project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Project" />
+        </set>
+        <set name="organizationsForCreatedBy" table="organization" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Organization" />
+        </set>
+        <set name="observationParametersForCreatedBy" table="observation_parameter" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationParameter" />
+        </set>
+        <set name="geographicZonesForCreatedBy" table="geographic_zone" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="created_by" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.GeographicZone" />
+        </set>
+    </class>
+</hibernate-mapping>

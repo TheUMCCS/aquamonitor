@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.Organization" table="organization">
+        <id name="organizationId" type="long">
+            <column name="organization_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.organization_organization_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="userByCreatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="created_by" not-null="true" />
+        </many-to-one>
+        <many-to-one name="organizationType" class="edu.miami.ccs.goma.pojos.OrganizationType" fetch="select">
+            <column name="type_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByUpdatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="updated_by" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" length="300" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="website" type="string">
+            <column name="website" length="500" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+        <property name="dateUpdated" type="timestamp">
+            <column name="date_updated" length="35" />
+        </property>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="organization_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.User" />
+        </set>
+        <set name="stations" table="station" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="organization_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Station" />
+        </set>
+        <set name="programs" table="program" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="organization_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Program" />
+        </set>
+    </class>
+</hibernate-mapping>

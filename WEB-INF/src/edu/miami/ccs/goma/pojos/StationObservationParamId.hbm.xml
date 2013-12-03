@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Feb 20, 2012 3:22:28 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.StationObservationParamId" table="station_observation_param_id">
+        <composite-id name="id" class="edu.miami.ccs.goma.pojos.StationObservationParamIdId">
+            <key-property name="stationId" type="long">
+                <column name="station_id" />
+            </key-property>
+            <key-property name="observationParamId" type="long">
+                <column name="observation_param_id" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="observationParameter" class="edu.miami.ccs.goma.pojos.ObservationParameter" update="false" insert="false" fetch="select">
+            <column name="observation_param_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="station" class="edu.miami.ccs.goma.pojos.Station" update="false" insert="false" fetch="select">
+            <column name="station_id" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

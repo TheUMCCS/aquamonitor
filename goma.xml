@@ -1,0 +1,12 @@
+<!--  Change the paths to Tomcat Home and Database and username/password to reflect your system before deploying -->
+
+<Context path="/goma" reloadable="true" docBase="/PATH/TO/TOMCAT-HOME/webapps/goma">
+
+		<Realm  className="org.apache.catalina.realm.JDBCRealm"
+		digest="MD5"
+		driverName="org.postgresql.Driver"
+		connectionURL="jdbc:postgresql://PATH/TO/DATABASE/"
+		connectionName="USERNAME" connectionPassword="PASSWORD"
+		userTable="aquamonitor.user" userNameCol="username" userCredCol="password"
+		userRoleTable="aquamonitor.user_role" roleNameCol="role" />
+</Context>

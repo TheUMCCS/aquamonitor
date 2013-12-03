@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.StatusValue" table="status_value">
+        <id name="statusId" type="long">
+            <column name="status_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.status_value_status_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="statusType" class="edu.miami.ccs.goma.pojos.StatusType" fetch="select">
+            <column name="status_type_id" not-null="true" />
+        </many-to-one>
+        <property name="statusCode" type="string">
+            <column name="status_code" length="20" not-null="true" />
+        </property>
+        <property name="statusValue" type="string">
+            <column name="status_value" length="225" not-null="true" />
+        </property>
+        <set name="approvalRequests" table="approval_request" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ApprovalRequest" />
+        </set>
+        <set name="projectsForStatusId" table="project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Project" />
+        </set>
+        <set name="dictionaries" table="dictionary" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Dictionary" />
+        </set>
+        <set name="observationTuples" table="observation_tuple" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationTuple" />
+        </set>
+        <set name="stationsForApprovalStatusId" table="station" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Station" />
+        </set>
+        <set name="programsForApprovalStatusId" table="program" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Program" />
+        </set>
+        <set name="programsForStatusId" table="program" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Program" />
+        </set>
+        <set name="geographicZones" table="geographic_zone" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.GeographicZone" />
+        </set>
+        <set name="projectsForApprovalStatusId" table="project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Project" />
+        </set>
+        <set name="stationsForStatusId" table="station" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Station" />
+        </set>
+        <set name="dictionaryTerms" table="dictionary_term" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.DictionaryTerm" />
+        </set>
+        <set name="observationParameters" table="observation_parameter" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="approval_status_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationParameter" />
+        </set>
+    </class>
+</hibernate-mapping>

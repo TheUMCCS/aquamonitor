@@ -1,0 +1,461 @@
+
+	  html, body, #map_canvas {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		font-family: lucida sans unicode, trebuchet ms, helvetica, sans-serif;
+		font-size: 13px;
+	  }
+	  #map_canvas {
+		z-index: 0;
+		position: relative;
+	  }
+	  #title {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 385px;
+		height: 40px;
+		z-index: 5;
+		background: url("/goma/web/images/map-search-control.png") no-repeat;
+		padding: 6px 10px 3px 10px;
+	  }
+	  #control {
+		background: url("/goma/web/images/control-bg.png") no-repeat;
+		width: 65px;
+		height: 100%;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+
+		z-index: 4;
+		padding: 60px 0px 0px 0px;
+	  }
+	  #status {
+	  	position: absolute;
+	  	top: 40%;
+	  	left: 40%;
+	  	z-index: 10;
+	  	padding: 10px;
+	  	font-weight: bold;
+	  	border: 1px solid #0081cb;
+	  	background: #000000;
+	  	opacity: 0.6;
+	  }
+	  #loading {
+	  	display: inline-block;
+	  	height: 25px;
+	  	vertical-align: middle;
+	  	font-size: 16px;
+	  	color: #0081cb;
+	  	padding-top: 5px;
+	  	padding-left: 10px;
+	  }
+	  #searchPane, #browsePane {
+		background: #9b9b9b;
+		width: 90%;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		border-bottom: 1px solid #5d5d5e;
+		display: none;
+		z-index: 3;
+		padding: 0px;
+	  }
+	 #intro {
+	 	margin-left: 60px;
+	 	text-align: center;
+	 	color: #d4d4d4;
+	 	font-size: 30px;
+	 	display: block;
+	 	padding-top: 40px;
+	 	background: transparent;
+	 }
+	  #obs-table {
+		background: url("/goma/web/images/search-pane-bg.jpg") repeat;
+		width: 720px;
+		height: 350px;
+		position: absolute;
+		left: 300px;
+		bottom: 0px;
+		display: none;
+		z-index: 4;
+		padding: 5px;
+		border: 1px solid #5d5d5e;
+	  }
+	  #obs-table #dynamic a, #obs-table #dynamic a:visited {
+	  	color: #3381a2;
+	  	text-decoration: none;
+	  }
+	  #obs-table #dynamic a:hover {
+	  	color: #ed8000;
+	  }
+	  #resultsTitle {
+	  	width: 500px;
+	  	font-weight: bold;
+	  	font-size: 13px;
+	  }
+	  #goma-logo {
+		height: 95px;
+		width: 123px;
+		position: absolute;
+		z-index: 2;
+		bottom: 30px;
+		left: 65px;
+	  }
+	  #q {
+			border: 0px solid #1ca7d5;
+			height: 24px;
+			color: #ffffff;
+			font-size: 14px;
+			font-weight: bold;
+			width: 275px;
+			border-top: 0px solid #5d5d5e;
+			background: #5d5d5e;
+		}
+		.formControl input[type="submit"] {
+			border: none;
+			background: #1ca7d5;
+			color: #ffffff;
+			font-weight: bold;
+			font-size: 18px;
+			letter-spacing: 2px;
+			font-family: trebuchet ms, helvetica, sans-serif;
+			float: right;
+		}
+
+		a img {
+			border: 0px;
+		}
+		a.menu {
+			height: 20px;
+			width: 52px;
+			display: block;
+			padding: 36px 4px 4px 3px;
+			font-size: 14px;
+			text-transform: uppercase;
+			border: 1px solid transparent;
+			text-decoration: none;
+			color: #000000;
+			margin-left: 2px;
+			text-align: center;
+		}
+		a.menu:hover {
+			border: 1px solid #000000;
+		}
+		a.search {
+			background: url('/goma/web/images/search.png') no-repeat;
+			background-position: 12px 0px;
+		}
+		a.browse {
+			background: url('/goma/web/images/browse.png') no-repeat;
+			background-position: 12px 0px;
+		}
+		a.home {
+			background: url('/goma/web/images/home.png') no-repeat;
+			background-position: 12px 0px;
+		}
+		a.grid {
+			background: url('/goma/web/images/grid.png') no-repeat;
+			background-position: 12px 0px;
+		}
+		.loading {
+			background: transparent;
+		}
+		#searchForm {
+			padding: 0px;
+		}
+		.paneControl {
+			height: 16px;
+			padding: 3px;
+			//background: url('/goma/web/images/pane-control.png') no-repeat;
+			background: #ffffff;
+			border-radius: 15px;
+			position: absolute;
+			top: 3px;
+			right: 2px;
+		}
+		.paneControl a {
+			display: inline-block;
+			height: 16px;
+			padding: 0px 3px 0px 17px;
+			font-family: trebuchet ms, helvetica, sans-serif;
+			text-transform: uppercase;
+			font-size: 12px;
+			color: #000000;
+			text-decoration: none;
+			border-radius: 15px;
+			border: 1px solid transparent;
+		}
+		.paneControl a.minimize {
+			background: url('/goma/web/images/minimize.png') no-repeat;
+		}
+		.paneControl a.help {
+			background: url('/goma/web/images/help.png') no-repeat;
+		}
+		.paneControl a.reset {
+			background: url('/goma/web/images/clear.png') no-repeat;
+		}
+		.paneControl a.refresh {
+			background: url('/goma/web/images/refresh.png') no-repeat;
+		}
+		.paneControl a.save {
+			background: url('/goma/web/images/save.png') no-repeat;
+		}
+		.paneControl a.download {
+			background: url('/goma/web/images/download.png') no-repeat;
+		}
+		.paneControl a.clear {
+			background: url('/goma/web/images/hide.png') no-repeat;
+		}
+		
+		
+		.controlTitle {
+			display: inline-block;
+			background: url('/goma/web/images/control-title.png') no-repeat;
+			width: 155px;
+			height: 28px;
+			background-position: -90px;
+			color: #ffffff;
+			padding-left: 3px;
+			font-weight: bold;
+		}
+		.formControlContainer {
+			width: 490px;
+			margin-left: 380px;	
+			background: url('/goma/web/images/form-control.png') repeat-x;
+			margin-top: 3px;
+			font-family: trebuchet ms, helvetica, sans-serif;
+			text-transform: uppercase;
+			line-height: 28px;
+		}
+		.searchContainer {
+			background: #ffffff;
+		}
+		.formControl {
+			display: inline-block;
+		}
+		.formControl a, .formControl a:visited {
+			display: inline-block;
+			color: #ffffff;
+			text-transform: uppercase;
+			text-decoration: none;
+			font-family: trebuchet ms, helvetica, sans-serif;
+			padding: 0px 10px 0px 5px;
+			font-weight: bold;
+			height: 28px;
+			background: url('/goma/web/images/form-control-separator.png') no-repeat;
+			background-position: right;
+		}
+		.formControl a:hover {
+			color: #afe2ff;
+		}
+		.formControlActive {
+			background: #b1b1b1;
+			height: 26px;
+		}
+		.formTable {
+			width: 700px;
+			padding: 4px;		
+		}
+		.formTable td {
+			height: 28px;
+		}
+		.formTable input[type=text],  select {
+			width: 400px;
+			height: 26px;
+			padding: 2px;
+			border: 1px solid transparent;
+			//border-bottom: 1px solid #cce2ff;
+			border: 1px solid #cce2ff;
+			font-family: lucida sans unicode, trebuchet ms, helvetica, sans-serif;
+		}
+		
+		.formTable input[type=text]:hover, input[type=text]:focus, select:focus, select:hover{
+			border-color: rgba(80, 170, 235, 0.6);
+    		box-shadow: 0 0 10px rgba(80, 170, 235, 0.5);
+    		outline: medium none;
+		}
+		
+		.formTable input[type=text].date {
+			width: 183px;
+			height: 22px;
+		}
+		#stationTable_length select {
+			width: 50px;
+			height: 20px;
+			padding: 0px;
+		}
+		.searchOpts {
+			background: #ffffff url('/goma/web/images/target-bg.png') bottom repeat-x;
+			margin: 6px 3px 0px 65px; 
+			padding: 10px 0px 0px 20px;
+		}
+		.target {
+			display: none;
+			background: #ffffff url('/goma/web/images/target-bg.png') bottom repeat-x;
+			margin: 5px 3px 0px 65px; 
+			height: 305px;
+			padding: 10px 0px 0px 20px;
+		}
+		.target select {
+			width: 95%;
+			margin: 3px;
+					
+		}
+		#tupleContainer {
+			height: 270px;
+			overflow: auto;
+			font-size: 12px;
+		}
+		.well {
+			margin-left: 19px;
+			display: none;
+		}
+		#dynamic{
+			color: #000000;
+			margin-top: 5px;
+			overflow: auto;
+			height: 325px;
+			clear: both;
+		}
+		.map-table th{
+			border-bottom: 1px solid #97999d;
+			margin-bottom: 5px;
+		}
+		.map-table td{
+			border-bottom: 1px dashed #97999d;
+		}
+		.helpDescription {
+			background: #5d5d5e;
+			border: 1px solid #efefef;
+			filter: alpha(opacity=50);
+			opacity: 0.8;
+			width: 300px;
+			position: absolute;
+			top: 40px;
+			right: 30px;
+			display: none;
+			color: #ffffff;
+			padding: 5px;
+			z-index: 15;
+		}
+		
+		#drawGZ {
+			position: absolute;
+			display: none;
+			z-index: 3;
+			left: 65px;
+			top: 55px;
+		}
+		#drawHelp {
+			display: none;
+		}
+		
+
+		/******************************************
+		 * Begin style elements block for the datatable.
+		 * These are modified elements from the default stylesheet
+		 * which incorporate specific changes made to the structure
+		 ******************************************/
+
+		.dataTable {
+			width: 99%;
+			border: 1px solid #999a9d;
+		}
+		.dataTable td {
+			border-bottom: 1px dashed #999a9d;
+			padding: 2px;
+			
+		}
+		.dataTable thead {
+			background: url('/goma/web/images/thead-bg.png') repeat-x;
+		}
+		.dataTable th {
+			text-align: left;
+			padding: 5px;
+		}
+		/* Two button pagination - previous / next */
+		.paginate_disabled_previous,
+		.paginate_enabled_previous,
+		.paginate_disabled_next,
+		.paginate_enabled_next {
+			height: 19px;
+			width: 0px;
+			float: left;
+			cursor: pointer;
+			*cursor: hand;
+			color: #111 !important;
+			overflow: hidden;
+		}
+		.paginate_disabled_previous:hover,
+		.paginate_enabled_previous:hover,
+		.paginate_disabled_next:hover,
+		.paginate_enabled_next:hover {
+			text-decoration: none !important;
+		}
+		.paginate_disabled_previous:active,
+		.paginate_enabled_previous:active,
+		.paginate_disabled_next:active,
+		.paginate_enabled_next:active {
+			outline: none;
+		}
+		
+		.paginate_disabled_previous,
+		.paginate_disabled_next {
+			color: #666 !important;
+		}
+		.paginate_disabled_previous,
+		.paginate_enabled_previous {
+			padding-left: 19px;
+		}
+		.paginate_disabled_next,
+		.paginate_enabled_next {
+			padding-left: 19px;
+
+		}
+		
+		.paginate_enabled_previous { 		        
+			background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+		    background-position: -40px 0px;
+		}		
+		.paginate_disabled_previous { 		        
+			background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+		    background-position: 0px 0px; 
+		 }
+		
+		.paginate_enabled_next { 
+			background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+			background-position: -60px 0px;
+		}
+		.paginate_disabled_next { 
+		        background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+		        background-position: -20px 0px;
+		}
+		.dataTables_filter {
+			float: right;
+		}
+		.dataTables_length {
+			float: left;
+		}
+		.top {
+			/*height: 30px;*/
+			width: 99%;
+		}
+		/*
+		 * Table wrapper
+		 */
+		.dataTables_wrapper {
+			position: relative;
+			*zoom: 1;
+		}
+		.dataTables_wrapper .bottom {
+			height: 50px;
+		}
+		#dynamic .top {
+			height: 24px;
+		}
+
+		/******************************************
+		 * End style elements block for the datatable.
+		 ******************************************/

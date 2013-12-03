@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.OrganizationType" table="organization_type">
+        <id name="typeId" type="long">
+            <column name="type_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.organization_type_type_id_seq</param>
+            </generator>
+        </id>
+        <property name="type" type="string">
+            <column name="type" length="100" not-null="true" />
+        </property>
+        <set name="organizations" table="organization" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="type_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Organization" />
+        </set>
+    </class>
+</hibernate-mapping>

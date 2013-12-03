@@ -1,0 +1,625 @@
+	  html, body, #map_canvas {
+		margin: 0;
+		padding: 0;
+		height: 100%;
+		font-family: lucida sans unicode, trebuchet ms, helvetica, sans-serif;
+		font-size: 13px;
+		min-height: 700px;
+		background: url("/goma/web/images/search-pane-bg.png") repeat-y;
+	  }
+	  body.login {
+	  	margin: auto;
+	  	padding-top: 100px;
+	  }
+	  body.splash {
+	  	margin: 0;
+	  	background: #ffffff url("/goma/web/images/bg-alt.jpg") no-repeat;
+	  	background-position: bottom center;
+	  	text-align: center;
+	  }
+	  #splash-menu {
+	  	margin: auto;
+	  	background: url("/goma/web/images/logo.png") no-repeat;
+	  	background-position: 100px 100px;
+	  	height: 400px;
+	  	width: 600px;
+	  	padding-top: 220px;
+	  	color: #cae5ff;
+	  }
+	  #accountRequest {
+	  	background: #687380;
+	  	padding: 10px;
+	  	width: 700px;
+	  }
+	  .clear {
+	  	clear: both;
+	  }
+	  #map_canvas {
+		z-index: 0;
+		position: relative;
+	  }
+	  #control {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 385px;
+		height: 40px;
+		z-index: 5;
+		background: url("/goma/web/images/map-search-control.png") no-repeat;
+		padding: 6px 10px 3px 10px;
+	  }
+	  #searchPane {
+		background: url("/goma/web/images/search-pane-bg.png") repeat;
+		width: 258px;
+		height: 95%;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		border-right: 1px solid #5d5d5e;
+		z-index: 4;
+		padding: 0px;
+		padding-top: 50px;
+	  }
+
+	  #menuPane {
+		
+		width: 258px;
+		height: 95%;
+		border-right: 1px solid #5d5d5e;
+		padding: 0px;
+		padding-top: 50px;
+		float: left;
+	  }
+		#query {
+			border: 0px solid red;
+			background: transparent;
+			height: 28px;
+			color: #6a6868;
+			font-size: 14px;
+			font-weight: bold;
+			width: 220px;
+			margin-left: 15px;
+		}
+		a img {
+			border: 0px;
+		}
+		#searchButton {
+			margin-right: 15px;
+			float: right;
+			height: 33px;
+			width: 33px;
+			padding: 2px 4px;
+		}
+		.go {
+			background: url('/goma/web/images/search-button.png') no-repeat;
+		}
+		.loading {
+			background: transparent;
+		}
+		#searchForm {
+			padding: 0px;
+			margin-left: -15px;
+		}
+		#searchbox {
+			width: 230px;
+			height: 30px;
+			background: url('/goma/web/images/searchbox-map.png') no-repeat;
+			margin: auto;
+			padding: 0px 3px;
+		}
+		.pane-header {
+			height: 38px;
+			width: 260px;
+			font-size: 13px;
+			font-weight: bold;
+			color: #313235;
+			padding-top: 10px;
+			padding-left: 14px;
+			background: url('/goma/web/images/control-bg.png') no-repeat;
+			cursor: pointer;
+			margin-top: 10px;
+		}
+		.form-control-active {
+			background: url('/goma/web/images/control-bg-active.png') no-repeat;
+		}
+		.pane-well {
+			background: #ffffff url('/goma/web/images/target-bg.png') bottom repeat-x;
+			margin-top: -11px;
+			margin-left: 5px;
+			width: 245px;
+			padding: 10px 2px 10px 2px;
+		}
+		.pane-well a, .pane-well a:visited{
+			display: block;
+			height: 24px;
+			text-decoration: none;
+			color: #5d5d5e;
+			padding-left: 8px;
+		}
+		.pane-well a:hover {
+			color: #4c9ed7;
+		}
+		.user-info {
+			height: 22px;
+			text-align: right;
+			margin-top: 10px;
+			padding-right: 30px;
+			padding-top: 5px;
+			background: #e8e8e8;
+		}
+		.console {
+			margin-left: 290px;
+		}
+		.page-title {
+			margin-top: 30px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.content {
+			margin: auto;
+			text-align: left;
+			background: #ffffff;
+			padding: 30px;
+			margin-top: 20px;
+			border-top: 1px solid #5d6064;
+		}
+
+		#dynamic {
+			margin-top: 0px;
+		}
+		.operations {
+			text-align: right;
+			margin-top: 20px;
+			width: 90%;
+			margin-bottom: 20px;
+		}
+		a, a:visited, a:hover {
+			text-decoration: none;
+			color: #2299de;
+		}
+		a.category {
+			display: inline-block;
+			height: 38px;
+			width: 123px;
+			background: url('/goma/web/images/cat-bg.png') no-repeat;
+			text-decoration: none;
+			text-align: center;
+			padding-top: 10px;
+			margin: 5px;
+			font-weight: bold;
+			font-size: 13px;
+			color: #ffffff;
+		}
+		a.edit-control{
+			height: 20px;
+			width: 20px;
+			background: url('/goma/web/images/edit-control.png') no-repeat;
+			display: block;
+		}
+		a.list-control{
+			height: 20px;
+			width: 20px;
+			background: url('/goma/web/images/detail.png') no-repeat;
+			display: block;
+		}
+		a.details, a.details:visited {
+			text-decoration: none;
+			color: #2299de;
+		}
+		a.details:hover {
+			color: #ec8103; 
+		}
+		a.external {
+			display: block;
+			height: 24px;
+			width: 24px;
+			background: url('/goma/web/images/hyperlink.png') no-repeat;
+		}
+		a.op-add {
+			background: url('/goma/web/images/add.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-edit {
+			background: url('/goma/web/images/edit.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-next {
+			background: url('/goma/web/images/next.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-list {
+			background: url('/goma/web/images/list.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-station {
+			background: url('/goma/web/images/station.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-delete {
+			background: url('/goma/web/images/delete.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-save {
+			background: url('/goma/web/images/save.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-check {
+			background: url('/goma/web/images/check.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-denied {
+			background: url('/goma/web/images/denied.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-info {
+			background: url('/goma/web/images/info.png') no-repeat;
+			background-position: 4px 2px;
+		}
+		a.op-toggle {
+			background: url('/goma/web/images/toggle.png') no-repeat;
+			background-position: 4px 2px;
+			margin:0px;
+			padding-top: 2px !important;
+		}
+		a.span {
+			margin: 0px !important;
+			padding-top: 2px !important;
+		}
+		.operation a, .operation a:visited {
+			padding: 5px 7px 3px 28px;
+			display: inline-block;
+			text-decoration: none;
+			color: #ffffff;
+			font-family: trebuchet ms, helvetica, sans-serif;
+			font-size: 13px;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		.operations ul {
+			list-style:none;
+			margin:0;
+			padding:0;
+		}
+		.operation {
+			margin:0;
+			padding:0;
+			list-style: none;
+			background: url('/goma/web/images/operation-bg.png') no-repeat;
+			display: inline-block;
+			height: 28px;
+		}
+		.operation:hover {
+			border-color: rgba(80, 170, 235, 0.6);
+    		box-shadow: 0 0 15px rgba(80, 170, 235, 0.8);
+		}
+		.formTable {
+			width: 700px;
+			padding: 4px;		
+		}
+		.formTable td {
+			height: 28px;
+		}
+		.dataTable input[type=text] {
+			width: 90%;
+		}
+		input[type=text], input[type=email], input[type=number], input[type=url], input[type=password], select {
+			width: 400px;
+			height: 22px;
+			padding: 2px;
+			border: 1px solid transparent;
+			//border-bottom: 1px solid #cce2ff;
+			border: 1px solid #cce2ff;
+			font-family: lucida sans unicode, trebuchet ms, helvetica, sans-serif;
+		}
+		select {
+			padding: 0px;
+		}
+		input[type=text]:hover, input[type=text]:focus, input[type=password]:hover, input[type=password]:focus, input[type=number]:hover, input[type=number]:focus, input[type=email]:hover, input[type=email]:focus, input[type=url]:hover, input[type=url]:focus, select:hover, select:focus{
+			border-color: rgba(80, 170, 235, 0.6);
+    		box-shadow: 0 0 10px rgba(80, 170, 235, 0.5);
+    		outline: medium none;
+		}
+		.formTable textarea {
+			width: 400px;
+			height: 200px;
+			border: 1px solid #cce2ff;
+			padding: 2px;
+			font-family: lucida sans unicode, trebuchet ms, helvetica, sans-serif;
+			font-size: 13px;
+		}
+		.formTable textarea:hover, .formTable textarea:focus
+		{
+			border-color: rgba(80, 170, 235, 0.6);
+    		box-shadow: 0 0 10px rgba(80, 170, 235, 0.5);
+    		outline: medium none;
+		}
+		.picker {
+			width: 400px;
+			height: 26px;
+			padding: 0px;
+		}
+		#password_well input[type=password] {
+			width: 280px;
+			margin-top: 2px;
+		}
+		#message {
+			display: none;
+			position: absolute;
+			top: -8px;
+			left: 500px;
+			height: 45px;
+			width: 350px;
+			z-index: 10;
+			padding-left: 65px; 
+			padding-top: 20px;
+			border-radius: 10px;
+		}
+		.error {
+			height: 14px;
+			width: 15px;
+			background: url('/goma/web/images/validation-error.png') no-repeat;
+			color: #c40000;
+			padding: 2px;
+			overflow: hidden;
+		}
+		.warning {
+			background: #ffffff url('/goma/web/images/warning.png') no-repeat;
+			border: 4px double #ffcc00;
+		}
+		.success {
+			background: #ffffff url('/goma/web/images/success.png') no-repeat;
+			border: 4px double green;
+		}
+		.failure {
+			background: #ffffff url('/goma/web/images/error.png') no-repeat;
+			border: 4px double red;
+		}
+		.fieldname {
+			font-family: trebuchet ms, helvetica, sans-serif;
+			padding-right: 10px;
+			font-weight: bold;
+		}
+		.required {
+			background: url('/goma/web/images/required.png') no-repeat center right;
+		}
+		.nested-input {
+			display: inline-block;
+			height: 30px;
+			width: 120px;
+		}
+		.violation {
+			margin: 100px auto;
+			box-shadow: 0 0 20px rgba(250, 10, 55, 0.5);
+			font-size: 20px;
+			background: #ffffff url('/goma/web/images/violation.png') no-repeat center left;
+			padding: 60px 10px 10px 130px;
+			border-radius: 10px;
+			width: 80%;
+			min-height: 100px;
+		}
+		/* simple css-based tooltip */
+		.tooltip {
+			background-color:#000;
+			border:1px solid #fff;
+			padding:5px 5px;
+			width:200px;
+			display:none;
+			color:#fff;
+			text-align:left;
+			font-size:12px;
+		
+			/* outline radius for mozilla/firefox only */
+			-moz-box-shadow:0 0 10px #000;
+			-webkit-box-shadow:0 0 10px #000;
+		}
+		#dialog-form {
+			display: none;
+		}
+
+
+		/******************************************
+		 * Begin style elements block for the datatable.
+		 * These are modified elements from the default stylesheet
+		 * which incorporate specific changes made to the structure
+		 ******************************************/
+		.dataTable {
+			width: 90%;
+			border: 1px solid #999a9d;
+		}
+		.dataTable td {
+			border-bottom: 1px dashed #999a9d;
+			padding: 8px;
+			
+		}
+		.dataTable thead {
+			background: url('/goma/web/images/thead-bg.png') repeat-x;
+		}
+		.dataTable th {
+			text-align: left;
+			padding: 8px;
+		}
+
+		/* Two button pagination - previous / next */
+		.paginate_disabled_previous,
+		.paginate_enabled_previous,
+		.paginate_disabled_next,
+		.paginate_enabled_next {
+			height: 19px;
+			width: 0px;
+			float: left;
+			cursor: pointer;
+			*cursor: hand;
+			color: #111 !important;
+			overflow: hidden;
+		}
+		.paginate_disabled_previous:hover,
+		.paginate_enabled_previous:hover,
+		.paginate_disabled_next:hover,
+		.paginate_enabled_next:hover {
+			text-decoration: none !important;
+		}
+		.paginate_disabled_previous:active,
+		.paginate_enabled_previous:active,
+		.paginate_disabled_next:active,
+		.paginate_enabled_next:active {
+			outline: none;
+		}
+		
+		.paginate_disabled_previous,
+		.paginate_disabled_next {
+			color: #666 !important;
+		}
+		.paginate_disabled_previous,
+		.paginate_enabled_previous {
+			padding-left: 19px;
+		}
+		.paginate_disabled_next,
+		.paginate_enabled_next {
+			padding-left: 19px;
+
+		}
+		
+		.paginate_enabled_previous { 		        
+			background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+		    background-position: -40px 0px;
+		}		
+		.paginate_disabled_previous { 		        
+			background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+		    background-position: 0px 0px; 
+		 }
+		
+		.paginate_enabled_next { 
+			background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+			background-position: -60px 0px;
+		}
+		.paginate_disabled_next { 
+		        background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+		        background-position: -20px 0px;
+		}
+		.dataTables_filter {
+			float: right;
+		}
+		.dataTables_length {
+			float: left;
+		}
+		.top {
+			height: 30px;
+			width: 90%;
+		}
+		/*
+		 * Table wrapper
+		 */
+		.dataTables_wrapper {
+			position: relative;
+			*zoom: 1;
+		}
+		.dataTables_wrapper .bottom {
+			height: 50px;
+		}
+		/******************************************
+		 * End style elements block for the datatable.
+		 ******************************************/
+		.wizardStage {
+			display: block;
+			background: #3d96c9;
+			color: #ffffff;
+			width: 88%;
+			height: 30px;
+			padding: 4px 10px;
+			font-weight: bold;
+			line-height: 25px;
+			margin-bottom: 10px;
+		}
+		.construction {
+			font-family: trebuchet ms, helvetica, sans-serif;
+			font-size: 22px;
+			color: #cccccc;
+		}
+		#obs-container .obs {
+			display: inline-block;
+			min-height: 40px;
+			min-width: 180px; 
+		}
+		.blurb {
+			padding: 5px;
+			width: 90%;
+			margin: 10px 0px;
+		}
+		#currentOp {
+			text-transform: capitalize;
+		}
+		.nestedOps {
+			position: relative;
+			z-index: 5;
+		}
+		#floatForm {
+			position: absolute;
+			z-index: 100;
+			top: 35px;
+			border: 1px solid;
+			width: 420px;
+			padding: 5px;
+			background: #ffffff;
+			color: #000000;
+			text-transform: none;
+		}
+		.allCenter {
+			padding-top: 100px;
+			margin: auto;
+			text-align: center;
+		}
+		.right {
+			display: inline-block;
+			float: right;
+			color: #afb1b7;			
+		}
+		.left {
+			display: inline-block;
+			float: left;
+			color: #afb1b7;
+		}
+		.post-footer {
+			clear: both;
+			height: 22px;
+		}
+		.stat-elem {
+			padding: 3px;
+			margin: 10px 0px;
+			border-bottom: 1px dotted #dbf1fb;
+		}
+		.stat-count {
+			display: inline-block;
+			float: right;
+			color: #00b4ff;
+			padding: 2px 7px;
+			border: 1px solid #00b4ff;
+			background: #dbf1fb;
+			font-weight: bold;
+			font-family: times new roman, georgia, serif;
+			font-size: 16px;
+		}
+		.subhead {
+			font-weight: bold;
+			color: #3381a2;
+			line-height: 27px;
+		}
+		.dashboard-widget {
+			width: 45%;
+			float: left;
+			border-color: rgba(80, 170, 235, 0.6);
+    		box-shadow: 0 0 10px rgba(80, 170, 235, 0.5);
+    		outline: medium none;
+    		padding: 5px;
+    		margin: 10px;
+		}
+		.widget-title {
+			font-weight: bold;
+			display: block;
+			font-size: 14px;
+			color: #60bbef;
+			padding: 3px;
+			height: 24px;
+			background: url('/goma/web/images/stats.png') no-repeat;
+			background-position: right center;
+			border-bottom: 1px solid #dbf1fb;
+		}

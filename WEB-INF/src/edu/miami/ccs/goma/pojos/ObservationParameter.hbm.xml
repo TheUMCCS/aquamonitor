@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.ObservationParameter" table="observation_parameter">
+        <id name="observationParamId" type="long">
+            <column name="observation_param_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.observation_parameter_observation_param_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="userByCreatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="created_by" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dictionaryTermBySamplingFreqId" class="edu.miami.ccs.goma.pojos.DictionaryTerm" fetch="select">
+            <column name="sampling_freq_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="observationTuple" class="edu.miami.ccs.goma.pojos.ObservationTuple" fetch="select">
+            <column name="observation_tuple_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="station" class="edu.miami.ccs.goma.pojos.Station" fetch="select">
+            <column name="station_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByUpdatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="updated_by" />
+        </many-to-one>
+        <many-to-one name="statusValue" class="edu.miami.ccs.goma.pojos.StatusValue" fetch="select">
+            <column name="approval_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dictionaryTermBySamplingDepthId" class="edu.miami.ccs.goma.pojos.DictionaryTerm" fetch="select">
+            <column name="sampling_depth_id" />
+        </many-to-one>
+        <property name="startDate" type="date">
+            <column name="start_date" length="13" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="end_date" length="13" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+        <property name="dateUpdated" type="timestamp">
+            <column name="date_updated" length="35" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.Dictionary" table="dictionary">
+        <id name="dictionaryId" type="long">
+            <column name="dictionary_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.dictionary_dictionary_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="userByCreatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="created_by" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByUpdatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="updated_by" />
+        </many-to-one>
+        <many-to-one name="statusValue" class="edu.miami.ccs.goma.pojos.StatusValue" fetch="select">
+            <column name="approval_status_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+        <property name="dateUpdated" type="timestamp">
+            <column name="date_updated" length="35" />
+        </property>
+        <property name="dictionaryCode" type="string">
+            <column name="dictionary_code" length="64" not-null="true" />
+        </property>
+        <set name="dictionaryTerms" table="dictionary_term" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dictionary_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.DictionaryTerm" />
+        </set>
+    </class>
+</hibernate-mapping>

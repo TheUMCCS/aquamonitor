@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.StatusType" table="status_type">
+        <id name="statusTypeId" type="long">
+            <column name="status_type_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.status_type_status_type_id_seq</param>
+            </generator>
+        </id>
+        <property name="statusTypeCode" type="string">
+            <column name="status_type_code" length="20" not-null="true" />
+        </property>
+        <property name="statusTypeName" type="string">
+            <column name="status_type_name" length="225" not-null="true" />
+        </property>
+        <set name="statusValues" table="status_value" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="status_type_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.StatusValue" />
+        </set>
+    </class>
+</hibernate-mapping>

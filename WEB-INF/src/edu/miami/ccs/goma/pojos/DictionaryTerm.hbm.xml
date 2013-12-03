@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.DictionaryTerm" table="dictionary_term">
+        <id name="termId" type="long">
+            <column name="term_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.dictionary_term_term_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="userByCreatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="created_by" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByUpdatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="updated_by" />
+        </many-to-one>
+        <many-to-one name="dictionary" class="edu.miami.ccs.goma.pojos.Dictionary" fetch="select">
+            <column name="dictionary_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="statusValue" class="edu.miami.ccs.goma.pojos.StatusValue" fetch="select">
+            <column name="approval_status_id" not-null="true" />
+        </many-to-one>
+        <property name="term" type="string">
+            <column name="term" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+        <property name="dateUpdated" type="timestamp">
+            <column name="date_updated" length="35" />
+        </property>
+        <set name="observationTuplesForParamCatId" table="observation_tuple" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="param_cat_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationTuple" />
+        </set>
+        <set name="observationTuplesForParamTypeId" table="observation_tuple" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="param_type_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationTuple" />
+        </set>
+        <set name="observationParametersForSamplingDepthId" table="observation_parameter" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sampling_depth_id" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationParameter" />
+        </set>
+        <set name="observationTuplesForAnalysisMethodId" table="observation_tuple" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="analysis_method_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationTuple" />
+        </set>
+        <set name="projectsForPurposeCategoryId" table="project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="purpose_category_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Project" />
+        </set>
+        <set name="projectsForAvailabilityId" table="project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="availability_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Project" />
+        </set>
+        <set name="observationParametersForSamplingFreqId" table="observation_parameter" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sampling_freq_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationParameter" />
+        </set>
+        <set name="observationTuplesForMediumId" table="observation_tuple" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="medium_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ObservationTuple" />
+        </set>
+        <set name="projectsForProprietaryRestrictionId" table="project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="proprietary_restriction_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Project" />
+        </set>
+    </class>
+</hibernate-mapping>

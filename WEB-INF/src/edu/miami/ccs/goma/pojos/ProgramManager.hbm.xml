@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.ProgramManager" table="program_manager" lazy="false">
+        <id name="programManagerId" type="long">
+            <column name="program_manager_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.program_manager_program_manager_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="person" class="edu.miami.ccs.goma.pojos.Person" fetch="select">
+            <column name="person_id" not-null="true" />
+        </many-to-one>
+        <set name="programs" table="program" inverse="true" lazy="false" fetch="select">
+            <key>
+                <column name="program_manager_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Program" />
+        </set>
+    </class>
+</hibernate-mapping>

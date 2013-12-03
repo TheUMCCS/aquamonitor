@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.ApprovalRequest" table="approval_request">
+        <id name="requestId" type="long">
+            <column name="request_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.approval_request_request_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="userByCreatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="created_by" not-null="true" />
+        </many-to-one>
+        <many-to-one name="approvalRequestType" class="edu.miami.ccs.goma.pojos.ApprovalRequestType" fetch="select">
+            <column name="type_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByUpdatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="updated_by" />
+        </many-to-one>
+        <many-to-one name="userByRequestorId" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="requestor_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="statusValue" class="edu.miami.ccs.goma.pojos.StatusValue" fetch="select">
+            <column name="approval_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByApproverId" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="approver_id" />
+        </many-to-one>
+        <property name="comment" type="string">
+            <column name="comment"/>
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+        <property name="dateUpdated" type="timestamp">
+            <column name="date_updated" length="35" />
+        </property>
+        <property name="parentKeyValue" type="long">
+            <column name="parent_key_value" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

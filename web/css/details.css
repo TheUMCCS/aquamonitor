@@ -1,0 +1,166 @@
+  html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: lucida sans unicode, trebuchet ms, helvetica, sans-serif;
+	font-size: 13px;
+  }		
+ 		a, a:visited, a:hover {
+		text-decoration: none;
+		color: #2299de;
+	}
+	#title {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 385px;
+		height: 40px;
+		z-index: 5;
+		background: url("/goma/web/images/map-search-control.png") no-repeat;
+		padding: 6px 10px 3px 10px;
+	 }
+	.console {
+		margin: 50px 10px ;
+	}
+	.formTable {
+		width: 700px;
+		padding: 4px;		
+	}
+	.formTable td {
+		height: 28px;
+	}
+	.required {
+		background: url('/goma/web/images/required.png') no-repeat center right;
+		padding-right: 30px;
+	}
+	.page-title {
+		margin-top: 30px;
+		font-size: 20px;
+		font-weight: bold;
+	}
+	.operation a, .operation a:visited {
+		padding: 5px 7px 3px 28px;
+		display: inline-block;
+		text-decoration: none;
+		color: #ffffff;
+		font-family: trebuchet ms, helvetica, sans-serif;
+		font-size: 13px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+	.operation {
+		margin:0;
+		padding:0;
+		list-style: none;
+		background: url('/goma/web/images/operation-bg.png') no-repeat;
+		display: inline-block;
+		height: 28px;
+	}
+	.operation:hover {
+		border-color: rgba(80, 170, 235, 0.6);
+   		box-shadow: 0 0 15px rgba(80, 170, 235, 0.8);
+	}
+	
+		/******************************************
+		 * Begin style elements block for the datatable.
+		 * These are modified elements from the default stylesheet
+		 * which incorporate specific changes made to the structure
+		 ******************************************/
+		.dataTable {
+			width: 90%;
+			border: 1px solid #999a9d;
+		}
+		.dataTable td {
+			border-bottom: 1px dashed #999a9d;
+			padding: 8px;
+			
+		}
+		.dataTable thead {
+			background: url('/goma/web/images/thead-bg.png') repeat-x;
+		}
+		.dataTable th {
+			text-align: left;
+			padding: 8px;
+		}
+
+		/* Two button pagination - previous / next */
+		.paginate_disabled_previous,
+		.paginate_enabled_previous,
+		.paginate_disabled_next,
+		.paginate_enabled_next {
+			height: 19px;
+			width: 0px;
+			float: left;
+			cursor: pointer;
+			*cursor: hand;
+			color: #111 !important;
+			overflow: hidden;
+		}
+		.paginate_disabled_previous:hover,
+		.paginate_enabled_previous:hover,
+		.paginate_disabled_next:hover,
+		.paginate_enabled_next:hover {
+			text-decoration: none !important;
+		}
+		.paginate_disabled_previous:active,
+		.paginate_enabled_previous:active,
+		.paginate_disabled_next:active,
+		.paginate_enabled_next:active {
+			outline: none;
+		}
+		
+		.paginate_disabled_previous,
+		.paginate_disabled_next {
+			color: #666 !important;
+		}
+		.paginate_disabled_previous,
+		.paginate_enabled_previous {
+			padding-left: 19px;
+		}
+		.paginate_disabled_next,
+		.paginate_enabled_next {
+			padding-left: 19px;
+
+		}
+		
+		.paginate_enabled_previous { 		        
+			background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+		    background-position: -40px 0px;
+		}		
+		.paginate_disabled_previous { 		        
+			background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+		    background-position: 0px 0px; 
+		 }
+		
+		.paginate_enabled_next { 
+			background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+			background-position: -60px 0px;
+		}
+		.paginate_disabled_next { 
+		        background: url('/goma/web/images/paging-sprite.jpg') no-repeat;
+		        background-position: -20px 0px;
+		}
+		.dataTables_filter {
+			float: right;
+		}
+		.dataTables_length {
+			float: left;
+		}
+		.top {
+			height: 30px;
+			width: 90%;
+		}
+		/*
+		 * Table wrapper
+		 */
+		.dataTables_wrapper {
+			position: relative;
+			*zoom: 1;
+		}
+		.dataTables_wrapper .bottom {
+			height: 50px;
+		}
+		/******************************************
+		 * End style elements block for the datatable.
+		 ******************************************/

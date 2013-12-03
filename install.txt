@@ -1,0 +1,36 @@
+
+*******GOMONITOR*********
+INSTALLATION INSTRUCTIONS
+-------------------------
+
+SYSTEM REQUIREMENTS:
+
+1. Apache Tomcat Version 7+
+2. PostGRESQL Version 9+ with PostGIS 
+3. Access to SMTP server
+
+PREREQUISITES:
+1. Copy SQL data dump to your database
+
+INSTALLATION STEPS (FROM WAR):
+1. Upload WAR file to server
+2. Copy WAR file to /$tomcat_home/webapps/
+3. Modify goma.xml file in source zip to reflect paths for your setup
+4. Copy goma.xml into /$tomcat_home/conf/Catalina/localhost/
+5. Restart Tomcat
+6. Change database parameters in /WEB-INF/classes/hibernate.cfg.xml to reflect your current setup
+7. Edit mail_setup.properties under /webapps/goma/WEB-INF/classes/ to reflect your mail server address
+8. Add the following entry to crontab, after replacing /path/to/tomcat/ to reflect your system
+	0 0 * * 1-5 /path/to/tomcat/webapps/goma/scripts/reminder.sh
+    Ensure the file reminder.sh has execute permissions from crontab
+9. Redeploy the application
+
+INSTALLATION STEPS (FROM SOURCE):
+1. Check out source from GitHub
+2. Ensure classpath contains all libraries in /lib folder
+3. When compiling from source, perform steps 6 & 7 on /webapps/goma/WEB-INF/src/.
+4. Compile from command line or from IDE
+5. Create WAR
+6. Follow steps 1-9 for INSTALLATION FROM WAR
+
+The application should now be running. Open a browser and go to "http://your-host-address/goma" to verify.

@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.Project" table="project">
+        <id name="projectId" type="long">
+            <column name="project_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.project_project_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="userByCreatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="created_by" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dictionaryTermByProprietaryRestrictionId" class="edu.miami.ccs.goma.pojos.DictionaryTerm" fetch="select">
+            <column name="proprietary_restriction_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dataDistributor" class="edu.miami.ccs.goma.pojos.DataDistributor" fetch="select">
+            <column name="distributor_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="program" class="edu.miami.ccs.goma.pojos.Program" fetch="select">
+            <column name="program_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="projectManager" class="edu.miami.ccs.goma.pojos.ProjectManager" fetch="select">
+            <column name="project_manager_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="userByUpdatedBy" class="edu.miami.ccs.goma.pojos.User" fetch="select">
+            <column name="updated_by" />
+        </many-to-one>
+        <many-to-one name="dictionaryTermByPurposeCategoryId" class="edu.miami.ccs.goma.pojos.DictionaryTerm" fetch="select">
+            <column name="purpose_category_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dictionaryTermByProjectMethodologyId" class="edu.miami.ccs.goma.pojos.DictionaryTerm" fetch="select">
+            <column name="project_methodology_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="statusValueByApprovalStatusId" class="edu.miami.ccs.goma.pojos.StatusValue" fetch="select">
+            <column name="approval_status_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="dictionaryTermByAvailabilityId" class="edu.miami.ccs.goma.pojos.DictionaryTerm" fetch="select">
+            <column name="availability_id" not-null="true" />
+        </many-to-one>
+        <many-to-one name="statusValueByStatusId" class="edu.miami.ccs.goma.pojos.StatusValue" fetch="select">
+            <column name="status_id" not-null="true" />
+        </many-to-one>
+        <property name="name" type="string">
+            <column name="name" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="description" not-null="true" />
+        </property>
+        <property name="website" type="string">
+            <column name="website" length="1000" />
+        </property>
+        <property name="dataLinkWebsite" type="string">
+            <column name="data_link_website" length="1000" />
+        </property>
+        <property name="fax" type="string">
+            <column name="fax" length="15" />
+        </property>
+        <property name="usageLimitations" type="string">
+            <column name="usage_limitations" />
+        </property>
+        <property name="purposeText" type="string">
+            <column name="purpose_text" not-null="true" />
+        </property>
+        <property name="dataQualityObj" type="string">
+            <column name="data_quality_obj" not-null="true" />
+        </property>
+        <property name="geoBoundary" type="string">
+            <column name="geo_boundary" />
+        </property>
+        <property name="startDate" type="date">
+            <column name="start_date" length="13" not-null="true" />
+        </property>
+        <property name="endDate" type="date">
+            <column name="end_date" length="13" not-null="true" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+        <property name="dateUpdated" type="timestamp">
+            <column name="date_updated" length="35" />
+        </property>
+        <property name="proprietaryRestrictionText" type="string">
+            <column name="proprietary_restriction_text" />
+        </property>
+        <set name="stations" table="station" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="primary_project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Station" />
+        </set>
+        <set name="stationProjects" table="station_project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="project_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.StationProject" />
+        </set>
+    </class>
+</hibernate-mapping>

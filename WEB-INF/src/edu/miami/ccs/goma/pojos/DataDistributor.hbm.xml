@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.DataDistributor" table="data_distributor">
+        <id name="dataDistributorId" type="long">
+            <column name="data_distributor_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.data_distributor_data_distributor_id_seq</param>
+            </generator>
+        </id>
+        <many-to-one name="person" class="edu.miami.ccs.goma.pojos.Person" fetch="select">
+            <column name="person_id" not-null="true" />
+        </many-to-one>
+        <set name="projects" table="project" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="distributor_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.Project" />
+        </set>
+    </class>
+</hibernate-mapping>

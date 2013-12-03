@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2012 4:38:51 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="edu.miami.ccs.goma.pojos.Person" table="person" lazy="false">
+        <id name="personId" type="long">
+            <column name="person_id" />
+            <generator class="sequence">
+            	<param name="sequence">aquamonitor.person_person_id_seq</param>
+            </generator>
+        </id>
+        <property name="phone" type="string">
+            <column name="phone" length="15" not-null="true" />
+        </property>
+        <property name="firstName" type="string">
+            <column name="first_name" length="40" not-null="true" />
+        </property>
+        <property name="lastName" type="string">
+            <column name="last_name" length="50" not-null="true" />
+        </property>
+        <property name="jobTitle" type="string">
+            <column name="job_title" length="40" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="address" length="200" />
+        </property>
+        <property name="fax" type="string">
+            <column name="fax" length="15" />
+        </property>
+        <property name="website" type="string">
+            <column name="website" length="200" />
+        </property>
+        <property name="bio" type="string">
+            <column name="bio" />
+        </property>
+        <property name="dateCreated" type="timestamp">
+            <column name="date_created" length="35" not-null="true" />
+        </property>
+        <property name="createdBy" type="long">
+            <column name="created_by" not-null="true" />
+        </property>
+        <property name="dateUpdated" type="timestamp">
+            <column name="date_updated" length="35" />
+        </property>
+        <property name="updatedBy" type="java.lang.Long">
+            <column name="updated_by" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" not-null="true" />
+        </property>
+        <set name="programManagers" table="program_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="person_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ProgramManager" />
+        </set>
+        <set name="projectManagers" table="project_manager" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="person_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.ProjectManager" />
+        </set>
+        <set name="dataDistributors" table="data_distributor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="person_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.DataDistributor" />
+        </set>
+        <set name="users" table="user" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="person_id" not-null="true" />
+            </key>
+            <one-to-many class="edu.miami.ccs.goma.pojos.User" />
+        </set>
+    </class>
+</hibernate-mapping>
